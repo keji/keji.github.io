@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-01T07:36:19.000Z</updated>
+  <updated>2016-05-01T08:07:19.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,15 +16,65 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>layout-weight</title>
+    <title>Markdown 语法说明</title>
+    <link href="http://yoursite.com/2016/05/01/Markdown-%E8%AF%AD%E6%B3%95%E8%AF%B4%E6%98%8E/"/>
+    <id>http://yoursite.com/2016/05/01/Markdown-语法说明/</id>
+    <published>2016-05-01T07:57:28.000Z</published>
+    <updated>2016-05-01T08:07:19.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Markdown-语法说明&quot;&gt;&lt;a href=&quot;#Markdown-语法说明&quot; class=&quot;headerlink&quot; title=&quot;Markdown 语法说明&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://wowubuntu.com/markdown/#editor&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Markdown 语法说明&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&quot;Markdown-语法2&quot;&gt;&lt;a href=&quot;#Markdown-语法2&quot; class=&quot;headerlink&quot; title=&quot;Markdown 语法2&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/keji/Markdown&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Markdown 语法2&lt;/a&gt;&lt;/h2&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Markdown-语法说明&quot;&gt;&lt;a href=&quot;#Markdown-语法说明&quot; class=&quot;headerlink&quot; title=&quot;Markdown 语法说明&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://wowubuntu.com/markdown/#editor&quot;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Layout weight 用法</title>
     <link href="http://yoursite.com/2016/05/01/layout-weight/"/>
     <id>http://yoursite.com/2016/05/01/layout-weight/</id>
     <published>2016-05-01T07:36:19.000Z</published>
-    <updated>2016-05-01T07:36:19.000Z</updated>
+    <updated>2016-05-01T07:55:03.000Z</updated>
     
-    <content type="html"></content>
+    <content type="html">&lt;p&gt;来自 &lt;a href=&quot;http://developer.android.com/guide/topics/ui/layout/linear.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;android 官方文档&lt;/a&gt;&lt;br&gt;LinearLayout also supports assigning a weight to individual children with the android:layout_weight attribute. This attribute assigns an “importance” value to a view in terms of how much space it should occupy on the screen. A larger weight value allows it to expand to fill any remaining space in the parent view. Child views can specify a weight value, and then any remaining space in the view group is assigned to children in the proportion of their declared weight. Default weight is zero.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://developer.android.com/images/ui/linearlayout.png&quot; alt=&quot;提示图片&quot;&gt;&lt;/p&gt;
+&lt;p&gt;For example, if there are three text fields and two of them declare a weight of 1, while the other is given no weight, the third text field without weight will not grow and will only occupy the area required by its content. The other two will expand equally to fill the space remaining after all three fields are measured. If the third field is then given a weight of 2 (instead of 0), then it is now declared more important than both the others, so it gets half the total remaining space, while the first two share the rest equally.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;LinearLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;match_parent&amp;quot;
+    android:paddingLeft=&amp;quot;16dp&amp;quot;
+    android:paddingRight=&amp;quot;16dp&amp;quot;
+    android:orientation=&amp;quot;vertical&amp;quot; &amp;gt;
+    &amp;lt;EditText
+        android:layout_width=&amp;quot;match_parent&amp;quot;
+        android:layout_height=&amp;quot;wrap_content&amp;quot;
+        android:hint=&amp;quot;@string/to&amp;quot; /&amp;gt;
+    &amp;lt;EditText
+        android:layout_width=&amp;quot;match_parent&amp;quot;
+        android:layout_height=&amp;quot;wrap_content&amp;quot;
+        android:hint=&amp;quot;@string/subject&amp;quot; /&amp;gt;
+    &amp;lt;EditText
+        android:layout_width=&amp;quot;match_parent&amp;quot;
+        android:layout_height=&amp;quot;0dp&amp;quot;
+        android:layout_weight=&amp;quot;1&amp;quot;
+        android:gravity=&amp;quot;top&amp;quot;
+        android:hint=&amp;quot;@string/message&amp;quot; /&amp;gt;
+    &amp;lt;Button
+        android:layout_width=&amp;quot;100dp&amp;quot;
+        android:layout_height=&amp;quot;wrap_content&amp;quot;
+        android:layout_gravity=&amp;quot;right&amp;quot;
+        android:text=&amp;quot;@string/send&amp;quot; /&amp;gt;
+&amp;lt;/LinearLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</content>
     
     <summary type="html">
+    
+      &lt;p&gt;来自 &lt;a href=&quot;http://developer.android.com/guide/topics/ui/layout/linear.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;android 官方文档&lt;/a&gt;&lt;br&gt;LinearLay
     
     </summary>
     

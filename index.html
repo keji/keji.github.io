@@ -64,6 +64,42 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Markdown-语法说明" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/01/Markdown-语法说明/" class="article-date">
+  <time datetime="2016-05-01T07:57:28.000Z" itemprop="datePublished">2016-05-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/01/Markdown-语法说明/">Markdown 语法说明</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Markdown-语法说明"><a href="#Markdown-语法说明" class="headerlink" title="Markdown 语法说明"></a><a href="http://wowubuntu.com/markdown/#editor" target="_blank" rel="external">Markdown 语法说明</a></h2><h2 id="Markdown-语法2"><a href="#Markdown-语法2" class="headerlink" title="Markdown 语法2"></a><a href="https://github.com/keji/Markdown" target="_blank" rel="external">Markdown 语法2</a></h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/01/Markdown-语法说明/" data-id="cinoanylh0000h6zkzeukppjz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-layout-weight" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/05/01/layout-weight/" class="article-date">
@@ -78,7 +114,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/01/layout-weight/">layout-weight</a>
+      <a class="article-title" href="/2016/05/01/layout-weight/">Layout weight 用法</a>
     </h1>
   
 
@@ -86,11 +122,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>来自 <a href="http://developer.android.com/guide/topics/ui/layout/linear.html" target="_blank" rel="external">android 官方文档</a><br>LinearLayout also supports assigning a weight to individual children with the android:layout_weight attribute. This attribute assigns an “importance” value to a view in terms of how much space it should occupy on the screen. A larger weight value allows it to expand to fill any remaining space in the parent view. Child views can specify a weight value, and then any remaining space in the view group is assigned to children in the proportion of their declared weight. Default weight is zero.</p>
+<p><img src="http://developer.android.com/images/ui/linearlayout.png" alt="提示图片"></p>
+<p>For example, if there are three text fields and two of them declare a weight of 1, while the other is given no weight, the third text field without weight will not grow and will only occupy the area required by its content. The other two will expand equally to fill the space remaining after all three fields are measured. If the third field is then given a weight of 2 (instead of 0), then it is now declared more important than both the others, so it gets half the total remaining space, while the first two share the rest equally.</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:paddingLeft=&quot;16dp&quot;
+    android:paddingRight=&quot;16dp&quot;
+    android:orientation=&quot;vertical&quot; &gt;
+    &lt;EditText
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:hint=&quot;@string/to&quot; /&gt;
+    &lt;EditText
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:hint=&quot;@string/subject&quot; /&gt;
+    &lt;EditText
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;0dp&quot;
+        android:layout_weight=&quot;1&quot;
+        android:gravity=&quot;top&quot;
+        android:hint=&quot;@string/message&quot; /&gt;
+    &lt;Button
+        android:layout_width=&quot;100dp&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_gravity=&quot;right&quot;
+        android:text=&quot;@string/send&quot; /&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/01/layout-weight/" data-id="cino9y6bo0000jzzkxjn9t35a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/01/layout-weight/" data-id="cinoanylm0001h6zkiu38nbn0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -129,7 +195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/05/01/myfirst/" data-id="cino9y6bt0001jzzk73cpiphe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/05/01/myfirst/" data-id="cinoanyls0002h6zk0mw6hjp6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -169,7 +235,11 @@
       <ul>
         
           <li>
-            <a href="/2016/05/01/layout-weight/">layout-weight</a>
+            <a href="/2016/05/01/Markdown-语法说明/">Markdown 语法说明</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/01/layout-weight/">Layout weight 用法</a>
           </li>
         
           <li>
