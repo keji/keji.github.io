@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-01T08:07:19.000Z</updated>
+  <updated>2016-05-01T08:41:59.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,13 +20,14 @@
     <link href="http://yoursite.com/2016/05/01/Markdown-%E8%AF%AD%E6%B3%95%E8%AF%B4%E6%98%8E/"/>
     <id>http://yoursite.com/2016/05/01/Markdown-语法说明/</id>
     <published>2016-05-01T07:57:28.000Z</published>
-    <updated>2016-05-01T08:07:19.000Z</updated>
+    <updated>2016-05-01T08:41:59.000Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;Markdown-语法说明&quot;&gt;&lt;a href=&quot;#Markdown-语法说明&quot; class=&quot;headerlink&quot; title=&quot;Markdown 语法说明&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://wowubuntu.com/markdown/#editor&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Markdown 语法说明&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&quot;Markdown-语法2&quot;&gt;&lt;a href=&quot;#Markdown-语法2&quot; class=&quot;headerlink&quot; title=&quot;Markdown 语法2&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/keji/Markdown&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Markdown 语法2&lt;/a&gt;&lt;/h2&gt;</content>
+    <content type="html">&lt;h2 id=&quot;Markdown-语法说明&quot;&gt;&lt;a href=&quot;#Markdown-语法说明&quot; class=&quot;headerlink&quot; title=&quot;Markdown 语法说明&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://wowubuntu.com/markdown/#editor&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Markdown 语法说明&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&quot;Markdown-语法2&quot;&gt;&lt;a href=&quot;#Markdown-语法2&quot; class=&quot;headerlink&quot; title=&quot;Markdown 语法2&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/keji/Markdown&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Markdown 语法2&lt;/a&gt;&lt;/h2&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+</content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;Markdown-语法说明&quot;&gt;&lt;a href=&quot;#Markdown-语法说明&quot; class=&quot;headerlink&quot; title=&quot;Markdown 语法说明&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://wowubuntu.com/markdown/#editor&quot;
+      &lt;h2 id=&quot;Markdown-语法说明&quot;&gt;&lt;a href=&quot;#Markdown-语法说明&quot; class=&quot;headerlink&quot; title=&quot;Markdown 语法说明&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://wowubuntu.com/markdown/#editor&quot;&gt;Markdown 语法说明&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&quot;Markdown-语法2&quot;&gt;&lt;a href=&quot;#Markdown-语法2&quot; class=&quot;headerlink&quot; title=&quot;Markdown 语法2&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/keji/Markdown&quot;&gt;Markdown 语法2&lt;/a&gt;&lt;/h2&gt;
     
     </summary>
     
@@ -38,10 +39,9 @@
     <link href="http://yoursite.com/2016/05/01/layout-weight/"/>
     <id>http://yoursite.com/2016/05/01/layout-weight/</id>
     <published>2016-05-01T07:36:19.000Z</published>
-    <updated>2016-05-01T07:55:03.000Z</updated>
+    <updated>2016-05-01T08:40:51.000Z</updated>
     
-    <content type="html">&lt;p&gt;来自 &lt;a href=&quot;http://developer.android.com/guide/topics/ui/layout/linear.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;android 官方文档&lt;/a&gt;&lt;br&gt;LinearLayout also supports assigning a weight to individual children with the android:layout_weight attribute. This attribute assigns an “importance” value to a view in terms of how much space it should occupy on the screen. A larger weight value allows it to expand to fill any remaining space in the parent view. Child views can specify a weight value, and then any remaining space in the view group is assigned to children in the proportion of their declared weight. Default weight is zero.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://developer.android.com/images/ui/linearlayout.png&quot; alt=&quot;提示图片&quot;&gt;&lt;/p&gt;
+    <content type="html">&lt;p&gt;来自 &lt;a href=&quot;http://developer.android.com/guide/topics/ui/layout/linear.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;android 官方文档&lt;/a&gt;&lt;br&gt;LinearLayout also supports assigning a weight to individual children with the android:layout_weight attribute. This attribute assigns an “importance” value to a view in terms of how much space it should occupy on the screen. A larger weight value allows it to expand to fill any remaining space in the parent view. Child views can specify a weight value, and then any remaining space in the view group is assigned to children in the proportion of their declared weight. Default weight is zero.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;http://developer.android.com/images/ui/linearlayout.png&quot; alt=&quot;提示图片&quot;&gt;&lt;/p&gt;
 &lt;p&gt;For example, if there are three text fields and two of them declare a weight of 1, while the other is given no weight, the third text field without weight will not grow and will only occupy the area required by its content. The other two will expand equally to fill the space remaining after all three fields are measured. If the third field is then given a weight of 2 (instead of 0), then it is now declared more important than both the others, so it gets half the total remaining space, while the first two share the rest equally.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
 &amp;lt;LinearLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
@@ -74,7 +74,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;来自 &lt;a href=&quot;http://developer.android.com/guide/topics/ui/layout/linear.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;android 官方文档&lt;/a&gt;&lt;br&gt;LinearLay
+      &lt;p&gt;来自 &lt;a href=&quot;http://developer.android.com/guide/topics/ui/layout/linear.html&quot;&gt;android 官方文档&lt;/a&gt;&lt;br&gt;LinearLayout also supports assigning a weight to individual children with the android:layout_weight attribute. This attribute assigns an “importance” value to a view in terms of how much space it should occupy on the screen. A larger weight value allows it to expand to fill any remaining space in the parent view. Child views can specify a weight value, and then any remaining space in the view group is assigned to children in the proportion of their declared weight. Default weight is zero.&lt;br&gt;
     
     </summary>
     
@@ -86,7 +86,7 @@
     <link href="http://yoursite.com/2016/05/01/myfirst/"/>
     <id>http://yoursite.com/2016/05/01/myfirst/</id>
     <published>2016-05-01T06:06:20.000Z</published>
-    <updated>2016-05-01T06:55:26.000Z</updated>
+    <updated>2016-05-01T08:41:58.000Z</updated>
     
     <content type="html">&lt;p&gt;Ubuntu14.04 升级15.10时黑屏问题. 系统进入后显示器无信号,很奇怪的问题,初步怀疑是N卡驱动问题,因此进入recovery模式,想通过命令行安装显卡驱动,但是执行&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ sudo apt-get install ppa-purge&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;出现错误,dpkg 被中断,您必须手工运行 sudo dpkg –configure -a 解决此问题&lt;br&gt;因此执行&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo dpkg --configure &lt;span class=&quot;_&quot;&gt;-a&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
