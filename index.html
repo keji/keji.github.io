@@ -78,7 +78,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/01/myfirst/">myfirst</a>
+      <a class="article-title" href="/2016/05/01/myfirst/">Ubuntu14.04 升级15.10时黑屏问题</a>
     </h1>
   
 
@@ -86,7 +86,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>Ubuntu14.04 升级15.10时黑屏问题. 系统进入后显示器无信号,很奇怪的问题,初步怀疑是N卡驱动问题,因此进入recovery模式,想通过命令行安装显卡驱动,但是执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install ppa-purge</span><br></pre></td></tr></table></figure></p>
+<p>出现错误,dpkg 被中断,您必须手工运行 sudo dpkg –configure -a 解决此问题<br>因此执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg --configure <span class="_">-a</span></span><br></pre></td></tr></table></figure></p>
+<p>执行完此命令后,重启了电脑竟然可以进入系统了</p>
+
       
     </div>
     <footer class="article-footer">
@@ -175,7 +178,7 @@
       <ul>
         
           <li>
-            <a href="/2016/05/01/myfirst/">myfirst</a>
+            <a href="/2016/05/01/myfirst/">Ubuntu14.04 升级15.10时黑屏问题</a>
           </li>
         
           <li>
