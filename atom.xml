@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-02T02:57:56.000Z</updated>
+  <updated>2016-05-07T02:51:56.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,15 +16,54 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Android 总结</title>
+    <link href="http://yoursite.com/2016/05/07/Android-%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2016/05/07/Android-总结/</id>
+    <published>2016-05-07T01:31:33.000Z</published>
+    <updated>2016-05-07T02:51:56.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Android-TextView-间距调整&quot;&gt;&lt;a href=&quot;#Android-TextView-间距调整&quot; class=&quot;headerlink&quot; title=&quot;Android TextView 间距调整&quot;&gt;&lt;/a&gt;Android TextView 间距调整&lt;/h2&gt;&lt;p&gt;通过设置&lt;br&gt;    android:lineSpacingExtra=”12dip” //设置间距&lt;br&gt;    android:lineSpacingMultipier=”2” //设置行间距的倍数&lt;br&gt;    android:includeFontPadding=”false” //取消默认首行尾行的默认padding间距&lt;br&gt;    &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Android-TextView-间距调整&quot;&gt;&lt;a href=&quot;#Android-TextView-间距调整&quot; class=&quot;headerlink&quot; title=&quot;Android TextView 间距调整&quot;&gt;&lt;/a&gt;Android TextView 间距调整&lt;/h2&gt;&lt;p&gt;通过设置&lt;br&gt;    android:lineSpacingExtra=”12dip” //设置间距&lt;br&gt;    android:lineSpacingMultipier=”2” //设置行间距的倍数&lt;br&gt;    android:includeFontPadding=”false” //取消默认首行尾行的默认padding间距&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android 命令</title>
+    <link href="http://yoursite.com/2016/05/02/Android-%E5%91%BD%E4%BB%A4/"/>
+    <id>http://yoursite.com/2016/05/02/Android-命令/</id>
+    <published>2016-05-02T14:24:27.000Z</published>
+    <updated>2016-05-02T14:37:46.000Z</updated>
+    
+    <content type="html">&lt;p&gt;输出电池信息&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ dumpsys batterystats &amp;gt; battery.txt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;输出电池信息&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;p
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>ubuntu命令</title>
     <link href="http://yoursite.com/2016/05/02/ubuntu%E5%91%BD%E4%BB%A4/"/>
     <id>http://yoursite.com/2016/05/02/ubuntu命令/</id>
     <published>2016-05-02T02:44:27.000Z</published>
-    <updated>2016-05-02T02:57:56.000Z</updated>
+    <updated>2016-05-02T13:05:07.000Z</updated>
     
     <content type="html">&lt;p&gt;ubuntu 包管理器命令&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ sudo synaptic&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;删除软件命令&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ sudo apt-get --purge atuoremove &amp;lt;pagename&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;搜索指定字符串命令&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ grep -rn &lt;span class=&quot;string&quot;&gt;&quot;search string&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
