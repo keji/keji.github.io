@@ -54,11 +54,11 @@
   </entry>
   
   <entry>
-    <title>ubuntu命令</title>
+    <title>ubuntu16.04问题</title>
     <link href="http://yoursite.com/2016/05/02/ubuntu%E5%91%BD%E4%BB%A4/"/>
     <id>http://yoursite.com/2016/05/02/ubuntu命令/</id>
     <published>2016-05-02T02:44:27.000Z</published>
-    <updated>2016-05-07T11:39:50.000Z</updated>
+    <updated>2016-05-08T14:35:48.000Z</updated>
     
     <content type="html">&lt;p&gt;ubuntu 包管理器命令&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ sudo synaptic&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;删除软件命令&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ sudo apt-get --purge atuoremove &amp;lt;pagename&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
