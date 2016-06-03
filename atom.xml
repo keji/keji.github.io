@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-23T05:45:50.000Z</updated>
+  <updated>2016-05-25T05:33:56.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,25 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>android json 解析</title>
+    <link href="http://yoursite.com/2016/05/24/android-json-%E8%A7%A3%E6%9E%90/"/>
+    <id>http://yoursite.com/2016/05/24/android-json-解析/</id>
+    <published>2016-05-24T13:46:15.000Z</published>
+    <updated>2016-05-25T05:33:56.000Z</updated>
+    
+    <content type="html">&lt;p&gt;服务器传输的数据不能保证准确性,甚至是类型也有可能错误的,客户端最低首先要求是不能崩溃&lt;br&gt;Android自带org.json类库,此类库的操作是首先通过 JSONObject.isNull方法判断是否存在&lt;br&gt;解析字段,如果有的话,再通过 JSONObject.optXXX(“xxx”);获取指定数值,此方法已经进行了类型&lt;br&gt;判断,不用我们再进行判断,避免了类型转换异常&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;服务器传输的数据不能保证准确性,甚至是类型也有可能错误的,客户端最低首先要求是不能崩溃&lt;br&gt;Android自带org.json类库,此类库的操作是首先通过 JSONObject.isNull方法判断是否存在&lt;br&gt;解析字段,如果有的话,再通过 JSONObject.opt
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>hexo 博客工具</title>
@@ -59,10 +78,11 @@
     <link href="http://yoursite.com/2016/05/07/Android-%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2016/05/07/Android-总结/</id>
     <published>2016-05-07T01:31:33.000Z</published>
-    <updated>2016-05-07T02:51:56.000Z</updated>
+    <updated>2016-05-29T02:48:13.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;Android-TextView-间距调整&quot;&gt;&lt;a href=&quot;#Android-TextView-间距调整&quot; class=&quot;headerlink&quot; title=&quot;Android TextView 间距调整&quot;&gt;&lt;/a&gt;Android TextView 间距调整&lt;/h2&gt;&lt;p&gt;通过设置&lt;br&gt;    android:lineSpacingExtra=”12dip” //设置间距&lt;br&gt;    android:lineSpacingMultipier=”2” //设置行间距的倍数&lt;br&gt;    android:includeFontPadding=”false” //取消默认首行尾行的默认padding间距&lt;br&gt;    &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-</content>
+&lt;h2 id=&quot;如何对图片进行着色&quot;&gt;&lt;a href=&quot;#如何对图片进行着色&quot; class=&quot;headerlink&quot; title=&quot;如何对图片进行着色&quot;&gt;&lt;/a&gt;如何对图片进行着色&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;TintedBitmapDrawable TintedBitmapDrawable = new TintedBitmapDrawable(getResource(),R.drawable.XXX, Color.BLACK);
+&lt;/code&gt;&lt;/pre&gt;</content>
     
     <summary type="html">
     

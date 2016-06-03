@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/05/07/Android-%E6%80%BB%E7%BB%93/</loc>
+    
+    <lastmod>2016-05-29T02:48:13.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/05/24/android-json-%E8%A7%A3%E6%9E%90/</loc>
+    
+    <lastmod>2016-05-25T05:33:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/05/23/hexo-%E5%8D%9A%E5%AE%A2%E5%B7%A5%E5%85%B7/</loc>
     
     <lastmod>2016-05-23T05:45:50.000Z</lastmod>
@@ -19,13 +33,6 @@
     <loc>http://yoursite.com/2016/05/02/ubuntu%E5%91%BD%E4%BB%A4/</loc>
     
     <lastmod>2016-05-09T12:39:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/05/07/Android-%E6%80%BB%E7%BB%93/</loc>
-    
-    <lastmod>2016-05-07T02:51:56.000Z</lastmod>
     
   </url>
   
