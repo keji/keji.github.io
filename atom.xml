@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-25T05:33:56.000Z</updated>
+  <updated>2016-06-04T02:34:23.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>重装ubuntu系统后的home挂载问题</title>
+    <link href="http://yoursite.com/2016/06/04/%E9%87%8D%E8%A3%85ubuntu%E7%B3%BB%E7%BB%9F%E5%90%8E%E7%9A%84home%E6%8C%82%E8%BD%BD%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2016/06/04/重装ubuntu系统后的home挂载问题/</id>
+    <published>2016-06-04T02:23:40.000Z</published>
+    <updated>2016-06-04T02:34:23.000Z</updated>
+    
+    <content type="html">&lt;p&gt;ubuntu系统从16.04重装为14.04时,因为原来16.04的home目录是挂载的一个独立分区不和/分区一起的,&lt;br&gt;但是重装网14.04后,home分区并没有用16.04的home分区,而是在/分区下的一个新的/home 导致原来的配置&lt;br&gt;信息不能使用,解决方法是重新将原home分区挂载到/home下&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-通过命令&quot;&gt;&lt;a href=&quot;#1-通过命令&quot; class=&quot;headerlink&quot; title=&quot;1. 通过命令&quot;&gt;&lt;/a&gt;1. 通过命令&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;sudo blkid
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;获取对应原-home分区的uuid&quot;&gt;&lt;a href=&quot;#获取对应原-home分区的uuid&quot; class=&quot;headerlink&quot; title=&quot;获取对应原/home分区的uuid&quot;&gt;&lt;/a&gt;获取对应原/home分区的uuid&lt;/h2&gt;&lt;h2 id=&quot;2-编辑-etc-fstab-添加&quot;&gt;&lt;a href=&quot;#2-编辑-etc-fstab-添加&quot; class=&quot;headerlink&quot; title=&quot;2. 编辑 /etc/fstab,添加&quot;&gt;&lt;/a&gt;2. 编辑 /etc/fstab,添加&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;UUID=XXXXXXX /home ext4 defaults 0 2
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;保存后重启-解决问题&quot;&gt;&lt;a href=&quot;#保存后重启-解决问题&quot; class=&quot;headerlink&quot; title=&quot;保存后重启,解决问题&quot;&gt;&lt;/a&gt;保存后重启,解决问题&lt;/h2&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;ubuntu系统从16.04重装为14.04时,因为原来16.04的home目录是挂载的一个独立分区不和/分区一起的,&lt;br&gt;但是重装网14.04后,home分区并没有用16.04的home分区,而是在/分区下的一个新的/home 导致原来的配置&lt;br&gt;信息不能使用,解决方法是重新将原home分区挂载到/home下&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>android json 解析</title>

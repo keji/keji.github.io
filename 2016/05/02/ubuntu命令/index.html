@@ -14,7 +14,7 @@
 <p>进行安装</p>
 <p>编译6.0源码时出现错误 <strong>android unsupported reloc 42</strong></p>
 <p>在 <a href="https://bbs.archlinux.org/viewtopic.php?id=209698" target="_blank" rel="external">https://bbs.archlinux.org/viewtopic.php?id=209698</a> 的六楼找到解决方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mv prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8/x86_64-linux/bin/ld prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8/x86_64-linux/bin/ld.OLD</span><br><span class="line">$ ln <span class="_">-s</span> /usr/bin/ld.gold prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8/x86_64-linux/bin/ld</span><br></pre></td></tr></table></figure></p>
-</div></article></div></section><footer><div class="paginator"><a href="/2016/05/02/Android-命令/" class="prev">上一篇</a><a href="/2016/05/01/Markdown-语法说明/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'seansun';
+</div></article></div></section><footer><div class="paginator"><a href="/2016/05/02/Android-命令/" class="prev">PREV</a><a href="/2016/05/01/Markdown-语法说明/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'seansun';
 var disqus_identifier = '2016/05/02/ubuntu命令/';
 var disqus_title = 'ubuntu16.04问题';
 var disqus_url = 'http://yoursite.com/2016/05/02/ubuntu命令/';
