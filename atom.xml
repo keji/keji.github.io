@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-28T04:31:06.000Z</updated>
+  <updated>2016-07-03T02:56:33.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>shell 脚本命令总结</title>
+    <link href="http://yoursite.com/2016/07/03/shell-%E8%84%9A%E6%9C%AC%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2016/07/03/shell-脚本命令总结/</id>
+    <published>2016-07-03T02:52:26.000Z</published>
+    <updated>2016-07-03T02:56:33.000Z</updated>
+    
+    <content type="html">&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;获取某个应用进程号-并打印此应用的环境变量&quot;&gt;&lt;a href=&quot;#获取某个应用进程号-并打印此应用的环境变量&quot; class=&quot;headerlink&quot; title=&quot;获取某个应用进程号,并打印此应用的环境变量&quot;&gt;&lt;/a&gt;获取某个应用进程号,并打印此应用的环境变量&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ pgrep gedit	&lt;span class=&quot;comment&quot;&gt;#获取进程号&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ cat /proc/进程号/environ | tr &lt;span class=&quot;string&quot;&gt;&#39;\0&#39;&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;\n&#39;&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;# tr命令格式化输出&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;获取某个应用进程号-并打印此应用的环境变量&quot;&gt;&lt;a href=&quot;#获取某个应用进程号-并打印此应用的环境变量&quot; class=&quot;headerlink&quot; title=&quot;获取某个应用进程号,并打印此应用的环境变量&quot;&gt;&lt;/a&gt;获取某个应
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Android 测试框架</title>
