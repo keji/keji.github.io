@@ -16,7 +16,12 @@
 <p>编译6.0源码时出现错误 <strong>android unsupported reloc 42</strong></p>
 <p>在 <a href="https://bbs.archlinux.org/viewtopic.php?id=209698" target="_blank" rel="external">https://bbs.archlinux.org/viewtopic.php?id=209698</a> 的六楼找到解决方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mv prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8/x86_64-linux/bin/ld prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8/x86_64-linux/bin/ld.OLD</span><br><span class="line">$ ln <span class="_">-s</span> /usr/bin/ld.gold prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8/x86_64-linux/bin/ld</span><br></pre></td></tr></table></figure></p>
 <h2 id="创建桌面快捷方式-如创建android-studio的快捷方式-创建文件-usr-share-applications-xxxxx-desktop-编辑内容如下"><a href="#创建桌面快捷方式-如创建android-studio的快捷方式-创建文件-usr-share-applications-xxxxx-desktop-编辑内容如下" class="headerlink" title="创建桌面快捷方式,如创建android studio的快捷方式,创建文件 /usr/share/applications/xxxxx.desktop,编辑内容如下"></a>创建桌面快捷方式,如创建android studio的快捷方式,创建文件 /usr/share/applications/xxxxx.desktop,编辑内容如下</h2><p>[Desktop Entry]<br>    Type=Application<br>    Name=studio    #名称<br>    Comment=studio<br>    Icon=/home/用户/图片/4.jpg #图标<br>    Exec=/home/用户/software/android-studio/bin/studio.sh #应用程序路径<br>    Terminal=false<br>    Categories=Development;IDE;Java;</p>
-</div></article></div></section><footer><div class="paginator"><a href="/2016/05/02/Android-命令/" class="prev">上一篇</a><a href="/2016/05/01/Markdown-语法说明/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'seansun';
+<h2 id="ubuntu引导丢失的解决方法"><a href="#ubuntu引导丢失的解决方法" class="headerlink" title="ubuntu引导丢失的解决方法"></a>ubuntu引导丢失的解决方法</h2><p>使用ubuntu可启动U盘启动系统</p>
+<p>按win键，打开Dash，在其中输入terminal，打开搜索到的terminal</p>
+<p>添加boot-repair的ppa。<br>在终端中输入 sudo add-apt-repository ppa:yannubuntu/boot-repair<br>按回车键添加完毕后，再输入命令 sudo apt-get update更新系统软件源列表</p>
+<p>安装boot-repair。在终端中输入命令sudo apt-get install boot-repair来安装boot-repair</p>
+<p>打开Dash，输入boot-repair，启动它，点击recommanded repair按钮。接下来等待软件自动搜索并弹出一个软件框提示你在终端中输入命令，按要求一条一条的复制其中的命令到终端中执行即可。结束后，重启电脑</p>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/05/02/Android-命令/" class="prev">PREV</a><a href="/2016/05/01/Markdown-语法说明/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'seansun';
 var disqus_identifier = '2016/05/02/ubuntu命令/';
 var disqus_title = 'ubuntu16.04问题';
 var disqus_url = 'http://yoursite.com/2016/05/02/ubuntu命令/';
