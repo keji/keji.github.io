@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/07/10/epoll-%E7%94%A8%E6%B3%95/</loc>
+    
+    <lastmod>2016-07-12T06:17:26.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/05/02/ubuntu%E5%91%BD%E4%BB%A4/</loc>
     
     <lastmod>2016-07-08T05:51:35.000Z</lastmod>

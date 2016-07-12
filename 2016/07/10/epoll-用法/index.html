@@ -1,0 +1,199 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> epoll 用法 · 最初的梦想</title><meta name="description" content="epoll 用法 - Cao KeJi"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="http://fonts.useso.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/keji" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/weixin.png" target="_self" class="nav-list-link">WEIXIN</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">epoll 用法</h1><div class="post-info">Jul 10, 2016</div><div class="post-content"><p>一个epoll的C语言例子</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;netdb.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;sys/epoll.h&gt;
+#include &lt;string.h&gt;
+#define MAXEVENTS 64
+static int create_and_bind (char *port){
+    struct addrinfo hints;
+    struct addrinfo *result, *rp;
+    int s,sfd;
+    //将hints所在内存清0
+    memset (&amp;hints, 0, sizeof(struct addrinfo));
+    //设置网络参数
+    hints.ai_family = AF_UNSPEC;    //返回ipv4和ipv6
+    hints.ai_socktype = SOCK_STREAM;  //tcp socket
+    hints.ai_flags = AI_PASSIVE;
+    s = getaddrinfo(NULL, port, &amp;hints, &amp;result);
+    if(s != 0){
+        fprintf(stderr, &quot;getaddrinfo: %s\n&quot;, gai_strerror(s));
+        return -1;
+    }
+    //循环常见绑定socket
+    for(rp=result; rp != NULL; rp=rp-&gt;ai_next){
+        //创建socket
+        sfd = socket(rp-&gt;ai_family,rp-&gt;ai_socktype,rp-&gt;ai_protocol);
+        if(sfd == -1){
+            continue;
+        }
+        //绑定socket
+        s = bind(sfd,rp-&gt;ai_addr,rp-&gt;ai_addrlen);
+        //成功就退出
+        if(s == 0){
+            break;
+        }
+        close(sfd);
+    }
+    //没有绑定成功
+    if(rp == NULL){
+        fprintf(stderr,&quot;Couldn&apos;t bind\n&quot;);
+    }
+    //释放资源
+    freeaddrinfo(result);
+    return sfd;
+}
+static int make_socket_non_blocking (int sfd){
+    int flags,s;
+    flags = fcntl (sfd, F_GETFL, 0);
+    if(flags == -1){
+        perror(&quot;fcntl&quot;);
+        return -1;
+    }
+    //设置非阻塞标志
+    flags |= O_NONBLOCK;
+    //重置flags
+    s = fcntl (sfd, F_SETFL, flags);
+    if(s == -1){
+        perror (&quot;fcntl&quot;);
+        return -1;
+    }
+    return 0;
+}
+int main(int argc, char *argv[]){
+    int sfd, s;
+    int efd;
+    struct epoll_event event;
+    struct epoll_event *events;
+    if(argc != 2){
+        fprintf(stderr, &quot;Usage: %s [port]\n&quot;,argv[0]);
+        exit(EXIT_FAILURE);
+    }
+    sfd = create_and_bind(argv[1]);
+    if(sfd == -1){
+        abort ();
+    }
+    s = make_socket_non_blocking(sfd);
+    if(s == -1){
+        perror(&quot;make socket no blocking&quot;);
+        abort();
+    }
+    //监听端口
+    s = listen (sfd, SOMAXCONN);
+    if (s == -1)
+    {
+        perror (&quot;listen&quot;);
+        abort ();
+    }
+    efd = epoll_create1(0);
+    if(efd == -1){
+        perror(&quot;epoll_create&quot;);
+        abort();
+    }
+    event.data.fd = sfd;
+    event.events = EPOLLIN | EPOLLET;//读入，边缘触发方式
+    s = epoll_ctl(efd,EPOLL_CTL_ADD,sfd,&amp;event);
+    if(s == -1){
+        perror(&quot;epoll_ctl&quot;);
+        abort();
+    }
+    //分配内存
+    events = calloc(MAXEVENTS,sizeof event);
+    //主循环
+    while(1){
+        int n,i;
+        n = epoll_wait(efd,events,MAXEVENTS, -1);
+        for(i = 0;i &lt; n; i++){
+            if((events[i].events &amp; EPOLLERR)||
+               (events[i].events &amp; EPOLLHUP) ||
+               (!(events[i].events &amp; EPOLLIN))){
+                fprintf(stderr, &quot;epoll error\n&quot;);
+                close(events[i].data.fd);
+                continue;
+            }else if(sfd == events[i].data.fd){
+                //有客户端连接请求
+                while(1){
+                    struct sockaddr in_addr;
+                    socklen_t in_len;
+                    int infd;
+                    char hbuf[NI_MAXHOST], sbuf[NI_MAXSERV];
+                    in_len = sizeof in_addr;
+                    infd = accept(sfd, &amp;in_addr, &amp;in_len);
+                    if(infd == -1){
+                        if((errno == EAGAIN) ||
+                        (errno == EWOULDBLOCK)) {
+                            //所有连接都处理了
+                            break;
+                        }else{
+                            perror (&quot;accept&quot;);
+                            break;
+                        }
+                    }
+                    //转换地址
+                    s = getnameinfo(&amp;in_addr,in_len,hbuf,sizeof hbuf,sbuf, sizeof sbuf,NI_NUMERICHOST|NI_NUMERICSERV);
+                    if(s == 0){
+                        printf(&quot;accept connetcion on %d (host=%s, port=%s)\n&quot;,infd,hbuf,sbuf);
+                    }
+                    s = make_socket_non_blocking(infd);
+                    if(s == -1){
+                        abort();
+                    }
+                    event.data.fd = infd;
+                    event.events = EPOLLIN | EPOLLET;
+                    s = epoll_ctl(efd,EPOLL_CTL_ADD,infd,&amp;event);
+                    if(s == -1){
+                        perror(&quot;epoll_ctl&quot;);
+                        abort();
+                    }
+                }
+                continue;
+            }else{
+                //客户端连接传输的数据接收
+                int done = 0;
+                while(1){
+                    ssize_t count;
+                    char buf[512];
+                    count = read(events[i].data.fd,buf,sizeof(buf));
+                    if(count == -1){
+                        //当errno == EAGAIN 时表示数据已经读完
+                        if(errno != EAGAIN){
+                            perror(&quot;read&quot;);
+                            done = 1;
+                        }
+                        break;
+                    }else if(count == 0){
+                        //数据读完
+                        done = 1;
+                        break;
+                    }
+                    s = write (1, buf, count);
+                    if(s == -1){
+                        perror(&quot;write&quot;);
+                        abort();
+                    }
+                }
+                if(done){
+                    printf(&quot;close connection on %d\n&quot;,events[i].data.fd);
+                    close(events[i].data.fd);
+                }
+            }
+        }
+    }
+    free(events);
+    close(sfd);
+    return EXIT_SUCCESS;
+}
+</code></pre><p>参考自<br><a href="https://banu.com/blog/2/how-to-use-epoll-a-complete-example-in-c/" target="_blank" rel="external">https://banu.com/blog/2/how-to-use-epoll-a-complete-example-in-c/</a><br><a href="http://blog.csdn.net/xiajun07061225/article/details/9250579" target="_blank" rel="external">http://blog.csdn.net/xiajun07061225/article/details/9250579</a><br><a id="more"></a></p>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/07/03/shell-脚本命令总结/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'seansun';
+var disqus_identifier = '2016/07/10/epoll-用法/';
+var disqus_title = 'epoll 用法';
+var disqus_url = 'http://yoursite.com/2016/07/10/epoll-用法/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//seansun.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2016 <a href="http://yoursite.com">Cao KeJi</a>, unless otherwise noted.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
