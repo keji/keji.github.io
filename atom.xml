@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-07-12T06:17:26.000Z</updated>
+  <updated>2016-07-12T06:19:05.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="http://yoursite.com/2016/07/10/epoll-%E7%94%A8%E6%B3%95/"/>
     <id>http://yoursite.com/2016/07/10/epoll-用法/</id>
     <published>2016-07-10T15:47:23.000Z</published>
-    <updated>2016-07-12T06:17:26.000Z</updated>
+    <updated>2016-07-12T06:19:05.000Z</updated>
     
-    <content type="html">&lt;p&gt;一个epoll的C语言例子&lt;/p&gt;
+    <content type="html">&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;一个epoll的C语言例子&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;#include &amp;lt;stdio.h&amp;gt;
 #include &amp;lt;stdlib.h&amp;gt;
 #include &amp;lt;unistd.h&amp;gt;
@@ -211,201 +212,17 @@ int main(int argc, char *argv[]){
     close(sfd);
     return EXIT_SUCCESS;
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;参考自&lt;br&gt;&lt;a href=&quot;https://banu.com/blog/2/how-to-use-epoll-a-complete-example-in-c/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://banu.com/blog/2/how-to-use-epoll-a-complete-example-in-c/&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/xiajun07061225/article/details/9250579&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/xiajun07061225/article/details/9250579&lt;/a&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;参考自&lt;br&gt;&lt;a href=&quot;https://banu.com/blog/2/how-to-use-epoll-a-complete-example-in-c/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://banu.com/blog/2/how-to-use-epoll-a-complete-example-in-c/&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/xiajun07061225/article/details/9250579&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/xiajun07061225/article/details/9250579&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;一个epoll的C语言例子&lt;/p&gt;
+      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;一个epoll的C语言例子&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;#include &amp;lt;stdio.h&amp;gt;
 #include &amp;lt;stdlib.h&amp;gt;
 #include &amp;lt;unistd.h&amp;gt;
-#include &amp;lt;errno.h&amp;gt;
-#include &amp;lt;sys/socket.h&amp;gt;
-#include &amp;lt;netdb.h&amp;gt;
-#include &amp;lt;fcntl.h&amp;gt;
-#include &amp;lt;sys/epoll.h&amp;gt;
-#include &amp;lt;string.h&amp;gt;
-#define MAXEVENTS 64
-static int create_and_bind (char *port){
-    struct addrinfo hints;
-    struct addrinfo *result, *rp;
-    int s,sfd;
-    //将hints所在内存清0
-    memset (&amp;amp;hints, 0, sizeof(struct addrinfo));
-    //设置网络参数
-    hints.ai_family = AF_UNSPEC;    //返回ipv4和ipv6
-    hints.ai_socktype = SOCK_STREAM;  //tcp socket
-    hints.ai_flags = AI_PASSIVE;
-    s = getaddrinfo(NULL, port, &amp;amp;hints, &amp;amp;result);
-    if(s != 0){
-        fprintf(stderr, &amp;quot;getaddrinfo: %s\n&amp;quot;, gai_strerror(s));
-        return -1;
-    }
-    //循环常见绑定socket
-    for(rp=result; rp != NULL; rp=rp-&amp;gt;ai_next){
-        //创建socket
-        sfd = socket(rp-&amp;gt;ai_family,rp-&amp;gt;ai_socktype,rp-&amp;gt;ai_protocol);
-        if(sfd == -1){
-            continue;
-        }
-        //绑定socket
-        s = bind(sfd,rp-&amp;gt;ai_addr,rp-&amp;gt;ai_addrlen);
-        //成功就退出
-        if(s == 0){
-            break;
-        }
-        close(sfd);
-    }
-    //没有绑定成功
-    if(rp == NULL){
-        fprintf(stderr,&amp;quot;Couldn&amp;apos;t bind\n&amp;quot;);
-    }
-    //释放资源
-    freeaddrinfo(result);
-    return sfd;
-}
-static int make_socket_non_blocking (int sfd){
-    int flags,s;
-    flags = fcntl (sfd, F_GETFL, 0);
-    if(flags == -1){
-        perror(&amp;quot;fcntl&amp;quot;);
-        return -1;
-    }
-    //设置非阻塞标志
-    flags |= O_NONBLOCK;
-    //重置flags
-    s = fcntl (sfd, F_SETFL, flags);
-    if(s == -1){
-        perror (&amp;quot;fcntl&amp;quot;);
-        return -1;
-    }
-    return 0;
-}
-int main(int argc, char *argv[]){
-    int sfd, s;
-    int efd;
-    struct epoll_event event;
-    struct epoll_event *events;
-    if(argc != 2){
-        fprintf(stderr, &amp;quot;Usage: %s [port]\n&amp;quot;,argv[0]);
-        exit(EXIT_FAILURE);
-    }
-    sfd = create_and_bind(argv[1]);
-    if(sfd == -1){
-        abort ();
-    }
-    s = make_socket_non_blocking(sfd);
-    if(s == -1){
-        perror(&amp;quot;make socket no blocking&amp;quot;);
-        abort();
-    }
-    //监听端口
-    s = listen (sfd, SOMAXCONN);
-    if (s == -1)
-    {
-        perror (&amp;quot;listen&amp;quot;);
-        abort ();
-    }
-    efd = epoll_create1(0);
-    if(efd == -1){
-        perror(&amp;quot;epoll_create&amp;quot;);
-        abort();
-    }
-    event.data.fd = sfd;
-    event.events = EPOLLIN | EPOLLET;//读入，边缘触发方式
-    s = epoll_ctl(efd,EPOLL_CTL_ADD,sfd,&amp;amp;event);
-    if(s == -1){
-        perror(&amp;quot;epoll_ctl&amp;quot;);
-        abort();
-    }
-    //分配内存
-    events = calloc(MAXEVENTS,sizeof event);
-    //主循环
-    while(1){
-        int n,i;
-        n = epoll_wait(efd,events,MAXEVENTS, -1);
-        for(i = 0;i &amp;lt; n; i++){
-            if((events[i].events &amp;amp; EPOLLERR)||
-               (events[i].events &amp;amp; EPOLLHUP) ||
-               (!(events[i].events &amp;amp; EPOLLIN))){
-                fprintf(stderr, &amp;quot;epoll error\n&amp;quot;);
-                close(events[i].data.fd);
-                continue;
-            }else if(sfd == events[i].data.fd){
-                //有客户端连接请求
-                while(1){
-                    struct sockaddr in_addr;
-                    socklen_t in_len;
-                    int infd;
-                    char hbuf[NI_MAXHOST], sbuf[NI_MAXSERV];
-                    in_len = sizeof in_addr;
-                    infd = accept(sfd, &amp;amp;in_addr, &amp;amp;in_len);
-                    if(infd == -1){
-                        if((errno == EAGAIN) ||
-                        (errno == EWOULDBLOCK)) {
-                            //所有连接都处理了
-                            break;
-                        }else{
-                            perror (&amp;quot;accept&amp;quot;);
-                            break;
-                        }
-                    }
-                    //转换地址
-                    s = getnameinfo(&amp;amp;in_addr,in_len,hbuf,sizeof hbuf,sbuf, sizeof sbuf,NI_NUMERICHOST|NI_NUMERICSERV);
-                    if(s == 0){
-                        printf(&amp;quot;accept connetcion on %d (host=%s, port=%s)\n&amp;quot;,infd,hbuf,sbuf);
-                    }
-                    s = make_socket_non_blocking(infd);
-                    if(s == -1){
-                        abort();
-                    }
-                    event.data.fd = infd;
-                    event.events = EPOLLIN | EPOLLET;
-                    s = epoll_ctl(efd,EPOLL_CTL_ADD,infd,&amp;amp;event);
-                    if(s == -1){
-                        perror(&amp;quot;epoll_ctl&amp;quot;);
-                        abort();
-                    }
-                }
-                continue;
-            }else{
-                //客户端连接传输的数据接收
-                int done = 0;
-                while(1){
-                    ssize_t count;
-                    char buf[512];
-                    count = read(events[i].data.fd,buf,sizeof(buf));
-                    if(count == -1){
-                        //当errno == EAGAIN 时表示数据已经读完
-                        if(errno != EAGAIN){
-                            perror(&amp;quot;read&amp;quot;);
-                            done = 1;
-                        }
-                        break;
-                    }else if(count == 0){
-                        //数据读完
-                        done = 1;
-                        break;
-                    }
-                    s = write (1, buf, count);
-                    if(s == -1){
-                        perror(&amp;quot;write&amp;quot;);
-                        abort();
-                    }
-                }
-                if(done){
-                    printf(&amp;quot;close connection on %d\n&amp;quot;,events[i].data.fd);
-                    close(events[i].data.fd);
-                }
-            }
-        }
-    }
-    free(events);
-    close(sfd);
-    return EXIT_SUCCESS;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;参考自&lt;br&gt;&lt;a href=&quot;https://banu.com/blog/2/how-to-use-epoll-a-complete-example-in-c/&quot;&gt;https://banu.com/blog/2/how-to-use-epoll-a-complete-example-in-c/&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/xiajun07061225/article/details/9250579&quot;&gt;http://blog.csdn.net/xiajun07061225/article/details/9250579&lt;/a&gt;&lt;br&gt;
+#include &amp;lt;
     
     </summary>
     
