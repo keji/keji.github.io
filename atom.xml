@@ -234,11 +234,12 @@ int main(int argc, char *argv[]){
     <link href="http://yoursite.com/2016/07/03/shell-%E8%84%9A%E6%9C%AC%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2016/07/03/shell-脚本命令总结/</id>
     <published>2016-07-03T02:52:26.000Z</published>
-    <updated>2016-07-03T03:29:20.000Z</updated>
+    <updated>2016-10-09T02:55:47.000Z</updated>
     
     <content type="html">&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h2 id=&quot;获取某个应用进程号-并打印此应用的环境变量&quot;&gt;&lt;a href=&quot;#获取某个应用进程号-并打印此应用的环境变量&quot; class=&quot;headerlink&quot; title=&quot;获取某个应用进程号,并打印此应用的环境变量&quot;&gt;&lt;/a&gt;获取某个应用进程号,并打印此应用的环境变量&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ pgrep gedit	&lt;span class=&quot;comment&quot;&gt;#获取进程号&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ cat /proc/进程号/environ | tr &lt;span class=&quot;string&quot;&gt;&#39;\0&#39;&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;\n&#39;&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;# tr命令格式化输出&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h2 id=&quot;获取上次命令执行成功状态&quot;&gt;&lt;a href=&quot;#获取上次命令执行成功状态&quot; class=&quot;headerlink&quot; title=&quot;获取上次命令执行成功状态&quot;&gt;&lt;/a&gt;获取上次命令执行成功状态&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; $? &lt;span class=&quot;comment&quot;&gt;#执行完命令后,紧接着执行此命令,返回0表示命令执行成功,非0表示命令执行失败&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;执行shell脚本的方式以及区别&quot;&gt;&lt;a href=&quot;#执行shell脚本的方式以及区别&quot; class=&quot;headerlink&quot; title=&quot;执行shell脚本的方式以及区别,&quot;&gt;&lt;/a&gt;执行shell脚本的方式以及区别,&lt;/h2&gt;&lt;p&gt;1.直接当做命令执行 ./xx.sh&lt;br&gt;2.sh script.sh 或 bash script.sh&lt;br&gt;3.source script.sh 或 . script.sh&lt;br&gt;前两种 在当前父进程下的子进程中执行，子进程完成后，子进程中的各项变量或操作将会结束而不会传回到父进程中.&lt;br&gt;第三种设置的各项参数和环境变量才会在父进程中起作用&lt;/p&gt;
 </content>
     
     <summary type="html">
