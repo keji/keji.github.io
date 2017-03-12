@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-12T03:16:57.000Z</updated>
+  <updated>2017-03-12T03:19:25.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,11 +20,11 @@
     <link href="http://yoursite.com/2017/03/12/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0git%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     <id>http://yoursite.com/2017/03/12/搭建本地git服务器/</id>
     <published>2017-03-12T03:06:57.000Z</published>
-    <updated>2017-03-12T03:16:57.000Z</updated>
+    <updated>2017-03-12T03:19:25.000Z</updated>
     
     <content type="html">&lt;p&gt;首先需要在本地主机上安装一个web服务器,我安装的是tomcat&lt;br&gt;安装完tomcat后,用过命令&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git &lt;span class=&quot;built_in&quot;&gt;clone&lt;/span&gt; --bare &lt;span class=&quot;_&quot;&gt;-l&lt;/span&gt; ./&amp;lt;my_project&amp;gt;/ ~/android/apache-tomcat-6.0.43/webapps/git/&amp;lt;my_project&amp;gt;.git&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; ~/android/apache-tomcat-6.0.43/webapps/git/&amp;lt;my_project&amp;gt;.git&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git update-server-info&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;配置成功之后,同一个网段的电脑,就可以通过&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git &lt;span class=&quot;built_in&quot;&gt;clone&lt;/span&gt; http://192.168.1.100:8080/git/&amp;lt;my_project&amp;gt;.git 来&lt;span class=&quot;built_in&quot;&gt;clone&lt;/span&gt;代码&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;或者&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git remote add &lt;span class=&quot;built_in&quot;&gt;local&lt;/span&gt;-origin http://192.168.1.100:8080/git/&amp;lt;my_project&amp;gt;.git&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;或者&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git remote add &lt;span class=&quot;built_in&quot;&gt;local&lt;/span&gt;-origin http://192.168.1.100:8080/git/&amp;lt;my_project&amp;gt;.git&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git fetch &lt;span class=&quot;built_in&quot;&gt;local&lt;/span&gt;-origin&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git rebase &lt;span class=&quot;built_in&quot;&gt;local&lt;/span&gt;-origin/master&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;来添加远程库&lt;/p&gt;
 &lt;p&gt;参考 &lt;a href=&quot;http://cryolite.iteye.com/blog/601084&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://cryolite.iteye.com/blog/601084&lt;/a&gt;&lt;/p&gt;
 </content>
