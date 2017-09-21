@@ -24,6 +24,7 @@
 <h2 id="列出指定端口号对应程序"><a href="#列出指定端口号对应程序" class="headerlink" title="列出指定端口号对应程序"></a>列出指定端口号对应程序</h2><p>lsof -i:8080</p>
 <h2 id="logcat-正则表达式选择"><a href="#logcat-正则表达式选择" class="headerlink" title="logcat 正则表达式选择"></a>logcat 正则表达式选择</h2><p>adb logcat | grep -E ‘XXXX|YYYY’ //打印出log中有XXXX或YYYY的行</p>
 <h2 id="Chrome-移除HSTS名单中的域名"><a href="#Chrome-移除HSTS名单中的域名" class="headerlink" title="Chrome 移除HSTS名单中的域名"></a>Chrome 移除HSTS名单中的域名</h2><p>chrome地址栏输入:<br>chrome://net-internals/#hsts<br>在Delete domain中删除指定域名</p>
+<h2 id="Ubuntu-安装字体"><a href="#Ubuntu-安装字体" class="headerlink" title="Ubuntu 安装字体"></a>Ubuntu 安装字体</h2><p>Debian 和 Ubuntu 下对中文支持比较好的字体有： fonts-droid、ttf-wqy-zenhei 和 ttf-wqy-microhei 等，除了文泉驿系列字体外，比较流行的免费中文字体还有文鼎提供的楷体和上海宋，包名分别是： fonts-arphic-ukai 和 fonts-arphic-uming。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install fonts-droid ttf-wqy-zenhei ttf-wqy-microhei fonts-arphic-ukai fonts-arphic-uming</span><br></pre></td></tr></table></figure></p>
 </div></article></div></section><footer><div class="paginator"><a href="/2016/05/02/Android-命令/" class="prev">PREV</a><a href="/2016/05/01/Markdown-语法说明/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'seansun';
 var disqus_identifier = '2016/05/02/ubuntu命令/';
 var disqus_title = 'ubuntu16.04问题';
