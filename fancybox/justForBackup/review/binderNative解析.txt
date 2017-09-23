@@ -1,0 +1,187 @@
+android.util.Binder.cpp
+
+gBinderOffsets 记录这java层与native的关联
+
+static struct bindernative_offsets_t
+{
+    // Class state.
+    jclass mClass;
+    jmethodID mExecTransact;
+
+    // Object state.
+    jfieldID mObject;
+
+} gBinderOffsets;
+
+//Java层的方法
+static const JNINativeMethod gBinderMethods[] = {
+     /* name, signature, funcPtr */
+    { "getCallingPid", "()I", (void*)android_os_Binder_getCallingPid },
+    { "getCallingUid", "()I", (void*)android_os_Binder_getCallingUid },
+    { "clearCallingIdentity", "()J", (void*)android_os_Binder_clearCallingIdentity },
+    { "restoreCallingIdentity", "(J)V", (void*)android_os_Binder_restoreCallingIdentity },
+    { "setThreadStrictModePolicy", "(I)V", (void*)android_os_Binder_setThreadStrictModePolicy },
+    { "getThreadStrictModePolicy", "()I", (void*)android_os_Binder_getThreadStrictModePolicy },
+    { "flushPendingCommands", "()V", (void*)android_os_Binder_flushPendingCommands },
+    { "init", "()V", (void*)android_os_Binder_init },
+    { "destroy", "()V", (void*)android_os_Binder_destroy },
+    { "blockUntilThreadAvailable", "()V", (void*)android_os_Binder_blockUntilThreadAvailable }
+};
+
+const char* const kBinderPathName = "android/os/Binder";
+
+static int int_register_android_os_Binder(JNIEnv* env)
+{
+    jclass clazz = FindClassOrDie(env, kBinderPathName);
+
+    gBinderOffsets.mClass = MakeGlobalRefOrDie(env, clazz);
+    gBinderOffsets.mExecTransact = GetMethodIDOrDie(env, clazz, "execTransact", "(IJJI)Z");
+    gBinderOffsets.mObject = GetFieldIDOrDie(env, clazz, "mObject", "J");
+
+    return RegisterMethodsOrDie(
+        env, kBinderPathName,
+        gBinderMethods, NELEM(gBinderMethods));
+}
+
+//注册android.os.BinderProxy
+
+static const JNINativeMethod gBinderProxyMethods[] = {
+     /* name, signature, funcPtr */
+    {"pingBinder",          "()Z", (void*)android_os_BinderProxy_pingBinder},
+    {"isBinderAlive",       "()Z", (void*)android_os_BinderProxy_isBinderAlive},
+    {"getInterfaceDescriptor", "()Ljava/lang/String;", (void*)android_os_BinderProxy_getInterfaceDescriptor},
+    {"transactNative",      "(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z", (void*)android_os_BinderProxy_transact},
+    {"linkToDeath",         "(Landroid/os/IBinder$DeathRecipient;I)V", (void*)android_os_BinderProxy_linkToDeath},
+    {"unlinkToDeath",       "(Landroid/os/IBinder$DeathRecipient;I)Z", (void*)android_os_BinderProxy_unlinkToDeath},
+    {"destroy",             "()V", (void*)android_os_BinderProxy_destroy},
+};
+
+const char* const kBinderProxyPathName = "android/os/BinderProxy";
+
+static int int_register_android_os_BinderProxy(JNIEnv* env)
+{
+    jclass clazz = FindClassOrDie(env, "java/lang/Error");
+    gErrorOffsets.mClass = MakeGlobalRefOrDie(env, clazz);
+
+    clazz = FindClassOrDie(env, kBinderProxyPathName);
+    gBinderProxyOffsets.mClass = MakeGlobalRefOrDie(env, clazz);
+    gBinderProxyOffsets.mConstructor = GetMethodIDOrDie(env, clazz, "<init>", "()V");
+    gBinderProxyOffsets.mSendDeathNotice = GetStaticMethodIDOrDie(env, clazz, "sendDeathNotice",
+            "(Landroid/os/IBinder$DeathRecipient;)V");
+
+    gBinderProxyOffsets.mObject = GetFieldIDOrDie(env, clazz, "mObject", "J");
+    gBinderProxyOffsets.mSelf = GetFieldIDOrDie(env, clazz, "mSelf",
+                                                "Ljava/lang/ref/WeakReference;");
+    gBinderProxyOffsets.mOrgue = GetFieldIDOrDie(env, clazz, "mOrgue", "J");
+
+    clazz = FindClassOrDie(env, "java/lang/Class");
+    gClassOffsets.mGetName = GetMethodIDOrDie(env, clazz, "getName", "()Ljava/lang/String;");
+
+    return RegisterMethodsOrDie(
+        env, kBinderProxyPathName,
+        gBinderProxyMethods, NELEM(gBinderProxyMethods));
+}
+
+
+Binder.h
+class BBinder : public IBinder
+{xxx}
+
+JavaBBinder 为Java层与Native层的桥梁，在onTransact方法中会调用Java层Binder的execTransact方法，exeTransact又会调用AIDL生成的类型Proxy的onTransact方法
+
+android_util_Binder.cpp
+
+class JavaBBinder : public BBinder
+{
+public:
+    JavaBBinder(JNIEnv* env, jobject object)
+        : mVM(jnienv_to_javavm(env)), mObject(env->NewGlobalRef(object))
+    {
+        ALOGV("Creating JavaBBinder %p\n", this);
+        android_atomic_inc(&gNumLocalRefs);
+        incRefsCreated(env);
+    }
+
+    bool    checkSubclass(const void* subclassID) const
+    {
+        return subclassID == &gBinderOffsets;
+    }
+
+    jobject object() const
+    {
+        return mObject;
+    }
+
+protected:
+    virtual ~JavaBBinder()
+    {
+        ALOGV("Destroying JavaBBinder %p\n", this);
+        android_atomic_dec(&gNumLocalRefs);
+        JNIEnv* env = javavm_to_jnienv(mVM);
+        env->DeleteGlobalRef(mObject);
+    }
+
+    virtual status_t onTransact(
+        uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags = 0)
+    {
+        JNIEnv* env = javavm_to_jnienv(mVM);
+
+        ALOGV("onTransact() on %p calling object %p in env %p vm %p\n", this, mObject, env, mVM);
+
+        IPCThreadState* thread_state = IPCThreadState::self();
+        const int32_t strict_policy_before = thread_state->getStrictModePolicy();
+
+        //printf("Transact from %p to Java code sending: ", this);
+        //data.print();
+        //printf("\n");
+        jboolean res = env->CallBooleanMethod(mObject, gBinderOffsets.mExecTransact,
+            code, reinterpret_cast<jlong>(&data), reinterpret_cast<jlong>(reply), flags);
+
+        if (env->ExceptionCheck()) {
+            jthrowable excep = env->ExceptionOccurred();
+            report_exception(env, excep,
+                "*** Uncaught remote exception!  "
+                "(Exceptions are not yet supported across processes.)");
+            res = JNI_FALSE;
+
+            /* clean up JNI local ref -- we don't return to Java code */
+            env->DeleteLocalRef(excep);
+        }
+
+        // Check if the strict mode state changed while processing the
+        // call.  The Binder state will be restored by the underlying
+        // Binder system in IPCThreadState, however we need to take care
+        // of the parallel Java state as well.
+        if (thread_state->getStrictModePolicy() != strict_policy_before) {
+            set_dalvik_blockguard_policy(env, strict_policy_before);
+        }
+
+        if (env->ExceptionCheck()) {
+            jthrowable excep = env->ExceptionOccurred();
+            report_exception(env, excep,
+                "*** Uncaught exception in onBinderStrictModePolicyChange");
+            /* clean up JNI local ref -- we don't return to Java code */
+            env->DeleteLocalRef(excep);
+        }
+
+        // Need to always call through the native implementation of
+        // SYSPROPS_TRANSACTION.
+        if (code == SYSPROPS_TRANSACTION) {
+            BBinder::onTransact(code, data, reply, flags);
+        }
+
+        //aout << "onTransact to Java code; result=" << res << endl
+        //    << "Transact from " << this << " to Java code returning "
+        //    << reply << ": " << *reply << endl;
+        return res != JNI_FALSE ? NO_ERROR : UNKNOWN_TRANSACTION;
+    }
+
+    virtual status_t dump(int fd, const Vector<String16>& args)
+    {
+        return 0;
+    }
+
+private:
+    JavaVM* const   mVM;
+    jobject const   mObject;
+};

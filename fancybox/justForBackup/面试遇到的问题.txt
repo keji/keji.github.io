@@ -1,0 +1,60 @@
+常链接
+TCP三次握手
+overload和override
+
+LRUCACHE
+http，https,http2之间的关系
+http转成https需要客户端做什么 ok
+设置网络超时，取消网络访问
+回掉怎么保证activity没有finish，保证没有内存溢出 OK
+网络访问安全有哪些' OK
+
+md5运用场景OK
+base64 OK
+签名算法  OK
+recycleview
+加密算法  OK
+
+内存，青年带，老年带，永久带 OK
+
+rxjava 并发，链式
+
+ondraw  刷新的方式 OK
+gif
+图片压缩bitmap，除了factory加载还有其他的吗？ OK
+oauth2 官方定义 OK
+加载JAVA
+OKhttp构建
+进程饱和
+后台进程转换
+WebView js 注入 OK
+Android新特性
+mvm
+
+onTrancation   service  OK
+‌Messager looper如何实现啊OK
+‌主线looper什么时候准备的 OK
+‌懒汉，饿汉单利模式 OK
+‌螺旋输出数组 OK
+‌逆袭字符串
+线程进程区别  OK
+‌堆内存结果，回收算法 OK
+‌anr oom OK
+looper线程的数量，queen数量，handler数量   OK
+Android的源码用到哪些设计模式
+大量消息给messagequeue，会出现满的情况吗 OK
+apk编译裁剪
+飞普纳切数列
+一个整数有多少1
+设计模式概括，有哪些类型的设计模式
+完全面相对象编程语言
+art devk虚拟机，git机制
+JAVA error类型的异常
+getX OK
+getTransX区别 OK
+常量缓冲区
+移动一个view的方法 OK
+
+
+handler内部引用，内存溢出 OK
+URL拦截 OK

@@ -1,0 +1,2 @@
+TLS Fallback Signaling Cipher Suite Value : 当协商的ClientHello.client_version小于当前客户端支持的最大加密版本时（如协商的sslV3,而最高支持tlsV2），ClientHello.cipher_suites里应该包含TLS_FALLBACK_SCSV.当服务器收到这个ClientHello,并且服务器支持的协议版本高于ClientHello.client_version时，服务器返回客户端
+一个inappropriate_fallback alert.

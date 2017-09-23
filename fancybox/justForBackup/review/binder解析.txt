@@ -1,0 +1,1 @@
+Binder的任务传递的通知是通过 wait_event_interruptible 和 wake_up_interruptible(target_wait); 操作来调度的

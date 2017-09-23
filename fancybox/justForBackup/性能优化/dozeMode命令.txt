@@ -1,0 +1,10 @@
+
+adb shell dumpsys battery
+adb shell dumpsys battery unplug
+adb shell dumpsys deviceidle enable
+adb shell dumpsys deviceidle force-idle
+adb shell dumpsys deviceidle
+adb shell am broadcast -a com.test.broadcast
+
+adb shell dumpsys deviceidle disable
+adb shell dumpsys battery reset
