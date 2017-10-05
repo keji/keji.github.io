@@ -7,3 +7,6 @@ tips:
 链接：https://www.zhihu.com/question/23444447/answer/29473911
 来源：知乎
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+## Makefile 学习文档
+http://blog.csdn.net/ruglcc/article/details/7814546/
