@@ -31,3 +31,8 @@ git reset --soft HEAD@{1}
 # previous command. It's now pointing at the erroneously amended commit.)
 git commit -C HEAD@{1}
 ```
+
+## 修改提交的author
+``` bash
+git commit --amend --author "Cao keji <caokeji@bytedance.com>"
+```
